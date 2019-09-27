@@ -17,6 +17,8 @@ const App = () => {
   const[massSW, setMassSW] = useState();
   const[birthSW, setBirthSW] = useState();
   const[hairSW, setHairSW] = useState();
+  const[eyeSW, setEyeSW] = useState();
+  const[idSW, setIdSW] = useState();
 
   useEffect(() => {
     axios.get("https://swapi.co/api/people/")
@@ -41,7 +43,13 @@ const App = () => {
       const carHair = infoSW.hair_color;
       setHairSW(carHair);
 
-      })
+      const carEye = infoSW.eye_color;
+      setEyeSW(carEye);
+
+      const carID = infoSW.id;
+      setIdSW(carID);
+
+    },)
 
 
     })
@@ -53,7 +61,7 @@ const App = () => {
   return (
     <div className="App">
       <h1 className="Header">React Wars</h1>
-      <SWCards nameOf={nameSW} />
+      <SWCards nameOf={nameSW} heightOf={heightSW} massOf={massSW} birthOf={birthSW} hairOf={hairSW} eyeOf={eyeSW} key={idSW} />
     </div>
   );
 }
