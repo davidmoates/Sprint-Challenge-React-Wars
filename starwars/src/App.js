@@ -30,6 +30,7 @@ const App = () => {
 
       const carName = infoSW.name;
       setNameSW(carName);
+      console.log(carName);
 
       const carHeight = infoSW.height;
       setHeightSW(carHeight);
@@ -46,8 +47,6 @@ const App = () => {
       const carEye = infoSW.eye_color;
       setEyeSW(carEye);
 
-      const carID = infoSW.id;
-      setIdSW(carID);
 
     },)
 
@@ -61,7 +60,7 @@ const App = () => {
   return (
     <div className="App">
       <h1 className="Header">React Wars</h1>
-      <SWCards nameOf={nameSW} heightOf={heightSW} massOf={massSW} birthOf={birthSW} hairOf={hairSW} eyeOf={eyeSW} key={idSW} />
+      <SWCards nameOf={nameSW} heightOf={heightSW} massOf={massSW} birthOf={birthSW} hairOf={hairSW} eyeOf={eyeSW} />
     </div>
   );
 }

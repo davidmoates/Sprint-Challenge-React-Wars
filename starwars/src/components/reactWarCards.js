@@ -15,7 +15,7 @@ export default function SWCards(props) {
     background: rgba(0, 0, 0, 0.6);
     width: 20%;
     height: auto;
-    margain: 2%;
+    margain: 5%;
   `;
 
   const SWH2 = styled.h2`
@@ -30,7 +30,16 @@ export default function SWCards(props) {
 
   return (
     <DivFlex>
-      <DivCard key={props.key}>
+      <DivCard>
+        <SWH2>{props.nameOf}</SWH2>
+        <ul>
+          <SWli>Height: {props.heightOf}</SWli>
+          <SWli>Weight: {props.massOf}</SWli>
+          <SWli>Hair Color: {props.hairOf}</SWli>
+          <SWli>Birth Year: {props.birthOf}</SWli>
+        </ul>
+      </DivCard>
+      <DivCard>
         <SWH2>{props.nameOf}</SWH2>
         <ul>
           <SWli>Height: {props.heightOf}</SWli>
@@ -40,5 +49,6 @@ export default function SWCards(props) {
         </ul>
       </DivCard>
     </DivFlex>
+
   )
 }
