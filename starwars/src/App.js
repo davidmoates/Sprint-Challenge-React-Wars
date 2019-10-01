@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './App.css';
 
-import SWCards from './components/reactWarCards';
+import SWCharacters from './components/SWCharacters';
 
 const App = () => {
   // Try to think through what state you'll need for this app before starting. Then build out
@@ -12,43 +12,16 @@ const App = () => {
   // side effect in a component, you want to think about which state and/or props it should
   // sync up with, if any.
 
-  const[nameSW, setNameSW] = useState();
-  const[heightSW, setHeightSW] = useState();
-  const[massSW, setMassSW] = useState();
-  const[birthSW, setBirthSW] = useState();
-  const[hairSW, setHairSW] = useState();
-  const[eyeSW, setEyeSW] = useState();
-  const[idSW, setIdSW] = useState();
+  const[dataSW, setDataSW] = useState([]);
+
+  console.log(dataSW);
 
   useEffect(() => {
     axios.get("https://swapi.co/api/people/")
     .then(response => {
       console.log(response);
       const carData = response.data.results;//had to set this const to be able to map over since results characteristics were to deep
-
-      carData.map(infoSW => { //made new array to access charateristics
-
-      const carName = infoSW.name;
-      setNameSW(carName);
-      console.log(carName);
-
-      const carHeight = infoSW.height;
-      setHeightSW(carHeight);
-
-      const carMass = infoSW.mass;
-      setMassSW(carMass);
-
-      const carBirth = infoSW.birth_year;
-      setBirthSW(carBirth);
-
-      const carHair = infoSW.hair_color;
-      setHairSW(carHair);
-
-      const carEye = infoSW.eye_color;
-      setEyeSW(carEye);
-
-
-    },)
+      setDataSW(carData);
 
 
     })
@@ -57,10 +30,13 @@ const App = () => {
     })
   },[])
 
+
+
   return (
+
     <div className="App">
       <h1 className="Header">React Wars</h1>
-      <SWCards nameOf={nameSW} heightOf={heightSW} massOf={massSW} birthOf={birthSW} hairOf={hairSW} eyeOf={eyeSW} />
+      <SWCharacters cData = {dataSW} />
     </div>
   );
 }
